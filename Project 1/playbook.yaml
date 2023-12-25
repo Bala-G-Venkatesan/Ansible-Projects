@@ -1,6 +1,7 @@
 ---
 - name: "Server Provisioning and Configuration"
   hosts: web-servers
+  become: true
   tasks: 
    - name: "Updating Package Cache"
      yum:
