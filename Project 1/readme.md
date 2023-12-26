@@ -2,7 +2,7 @@
 
 Automate the provisioning and configuration of Apache web servers on CentOS and Ubuntu target machines using this Ansible playbook.
 
-![playoutput](placeholder)
+![playoutput](/img/play.JPG)
 
 ## Key Features
 
@@ -23,9 +23,9 @@ Automate the provisioning and configuration of Apache web servers on CentOS and 
 - Customize variables in templates based on your preferences.
 - Adjust settings in `ansible.cfg` if needed.
 
-![ubuntu_output](ub)
+![ubuntu_output](/img/ubuntu.JPG)
 
-![centos_output]()
+![centos_output](/img/centos.JPG)
 
 ## Author - `V Balaji`
 
