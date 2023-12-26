@@ -2,7 +2,7 @@
 
 Automate the provisioning and configuration of Apache web servers on CentOS and Ubuntu target machines using this Ansible playbook.
 
-![nodes](/img/img/Ansible_nodes.JPG)
+![nodes](img/Ansible_nodes.JPG)
 
 ## Key Features
 
