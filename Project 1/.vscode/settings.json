@@ -1,6 +1,0 @@
-{
-    "yaml.schemas": {
-        "Kubernetes": "*.yaml",
-        "https://raw.githubusercontent.com/ansible/ansible-lint/main/src/ansiblelint/schemas/ansible.json#/$defs/playbook": "file:///e%3A/Ansible-Projects/Project%201/playbook.yaml"
-    }
-}
