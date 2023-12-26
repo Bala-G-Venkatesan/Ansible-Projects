@@ -1,8 +1,15 @@
-target1 ansible_host="54.88.7.208" ansible_user="ec2-user" ansible_ssh_private_key_file="/home/ubuntu/ansible.pem"
-target2 ansible_host="3.87.221.151" ansible_user="ec2-user" ansible_ssh_private_key_file="/home/ubuntu/ansible.pem"
-target3 ansible_host="18.205.163.178" ansible_user="ec2-user" ansible_ssh_private_key_file="/home/ubuntu/ansible.pem"
+# Kindly please update the placeholders in the inventory file before use: 
+
+target1 
+ansible_host="<Your-targetmachine-public-ip>" 
+ansible_user="<remote user of target host>" 
+ansible_ssh_private_key_file="<path to target host private key>"
+
+target2 
+ansible_host="<Your-targetmachine-public-ip>" 
+ansible_user="<remote user of target host>" 
+ansible_ssh_private_key_file="<path to target host private key>"
 
 [web-servers]
 target1
 target2
-target3
