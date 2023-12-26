@@ -2,17 +2,58 @@
 - name: "Server Provisioning and Configuration"
   hosts: web-servers
   become: true
+  gather_facts: true
   tasks: 
-   - name: "Updating Package Cache"
-     dnf:
+   - name: "Updating Package Cache in CentOS"
+     yum:
       name: "*"
       state: latest
-   - name: "Installing httpd"
-     dnf:
+     when: ansible_facts.distribution == "CentOS"
+   - name: "Updating Package Cache in Ubuntu"
+     apt:
+      update_cache: yes
+     when: ansible_facts.distribution == "Ubuntu"
+
+   - name: "Installing Apache Server in CentOS"
+     yum:
       name: httpd
       state: present
-   - name: "Starting httpd service"
+     when: ansible_facts.distribution == "CentOS"
+   - name: "Installing Apache Server in Ubuntu"
+     apt:
+      name: apache2
+      state: present
+     when: ansible_facts.distribution == "Ubuntu"
+
+   - name: "Starting Apache Server in CentOS"
      systemd:
       name: httpd
       state: started
       enabled: true
+     when: ansible_facts.distribution == "CentOS"
+   - name: "Starting Apache Server in Ubuntu"
+     service:
+      name: apache2
+      state: started
+      enabled: true
+     when: ansible_facts.distribution == "Ubuntu"
+
+   - name: "Updating index.html"
+     template:
+      src: webpage_template.j2
+      dest: /var/www/html/index.html
+     vars:
+      background_color: "{{ '#CC0000' if ansible_facts.distribution == 'CentOS' else '#DD4814' }}"
+      family: "{{ ansible_facts.distribution }}"
+      package_name: "{{ 'httpd' if ansible_facts.distribution == 'CentOS' else 'apache2' }}"
+     notify: "{{ 'restart_httpd' if ansible_facts.distribution == 'CentOS' else 'restart_apache2' }}"
+     
+  handlers:
+   - name: restart_httpd
+     systemd:
+      name: httpd
+      state: restarted
+   - name: restart_apache2
+     service:
+      name: apache2
+      state: restarted
