@@ -40,7 +40,7 @@
 
    - name: "Updating index.html"
      template:
-      src: webpage_template.j2
+      src: ../templates/webpage_template.j2
       dest: /var/www/html/index.html
      vars:
       background_color: "{{ '#CC0000' if ansible_facts.distribution == 'CentOS' else '#DD4814' }}"
